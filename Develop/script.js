@@ -1,13 +1,28 @@
 $(function () {
   let buttons = $(".saveBtn");
-  buttons.on('click', function (event) {
+  buttons.on("click", function (event) {
     let parent = $(this).parent().attr("id");
     let description = $(this).siblings(".description").val();
-    localStorage.setItem(parent, description)
+    localStorage.setItem(parent, description);
   });
 
   let date = dayjs().format("MMM D, YYYY");
   $("#currentDay").text(date);
+
+  $(".time-block").each(function () {
+    $(this).removeClass("past");
+    $(this).removeClass("present");
+    $(this).removeClass("future");
+    let hour = parseInt($(this).attr("id").split("-")[1]);
+    console.log(hour);
+    if (hour > dayjs().hour()) {
+      $(this).addClass("future");
+    } else if (hour === dayjs().hour()) {
+      $(this).addClass("present");
+    } else {
+      $(this).addClass("past");
+    }
+  });
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -15,7 +30,7 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   //
-   
+
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
@@ -26,5 +41,4 @@ $(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  // TODO: Add code to display the current date in the header of the page.
 });
