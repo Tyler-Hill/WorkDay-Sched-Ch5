@@ -21,7 +21,6 @@ $(function () {
     } else {
       $(this).addClass("past");
     }
-    console.log(dayjs().hour());
   });
 
   $("#hour-9").children(".description").val(localStorage.getItem("hour-9"));
@@ -33,8 +32,4 @@ $(function () {
   $("#hour-15").children(".description").val(localStorage.getItem("hour-15"));
   $("#hour-16").children(".description").val(localStorage.getItem("hour-16"));
   $("#hour-17").children(".description").val(localStorage.getItem("hour-17"));
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
 });
